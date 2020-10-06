@@ -12,7 +12,7 @@ namespace myPantry.Models
         public string UserId { get; set; }
         public Users User { get; set; }
         public string Description { get; set; }
-
+        public string RecipeUrl { get; set; }
         List<RecipeProducts> RecipeProducts { get; set; } = new List<RecipeProducts>();
         //public virtual ICollection<RecipeProducts> RecipeProducts { get; set; }
     }
