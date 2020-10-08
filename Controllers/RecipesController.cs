@@ -36,6 +36,8 @@ namespace myPantry.Controllers
 
             var recipe = await _context.Recipe
                 .Include(r => r.User)
+                .Include(r => r.RecipeProducts)
+                .ThenInclude(rp => rp.Product)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (recipe == null)
             {

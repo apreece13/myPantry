@@ -25,9 +25,6 @@
                 @Html.DisplayNameFor(model => model.ProductImage)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ProductProductType)
             </th>
             <th></th>
@@ -43,16 +40,13 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductLocation.Id)
+                @Html.DisplayFor(modelItem => item.ProductLocation.LocationName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductImage)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductProductType.Id)
+                @Html.DisplayFor(modelItem => item.ProductProductType.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

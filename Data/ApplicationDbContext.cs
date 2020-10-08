@@ -428,6 +428,7 @@ namespace myPantry.Data
                 LocationName = "Shopping List"
             }
             );
+            //Create 39 RecipeProduct relationships
             modelBuilder.Entity<RecipeProducts>().HasData(
             new RecipeProducts()
             {
