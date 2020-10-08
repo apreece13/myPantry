@@ -12,9 +12,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+           <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
+           </th>
+
             @*<th>
             @Html.DisplayNameFor(model => model.User)
         </th>*@
@@ -22,23 +23,37 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.RecipeProducts)
-            </th>*@
+            @Html.DisplayNameFor(model => model.RecipeProducts)
+        </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+            @if (item.RecipeProducts.Any(p => p.Product.Quantity < 1))
+            {
+            <th class="text-danger">
+                @item.Name
+            </th>
+
+            }
+            else
+            {
+            <th class="text-success">
+                @item.Name
+            </th>
+
+            }
             @*<td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>*@
-            <td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.User.Id)
+        </td>*@
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

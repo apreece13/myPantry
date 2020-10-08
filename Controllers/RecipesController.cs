@@ -22,7 +22,8 @@ namespace myPantry.Controllers
         // GET: Recipes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Recipe.Include(r => r.User);
+            var applicationDbContext = _context.Recipe.Include(r => r.User).Include(r => r.RecipeProducts)
+                .ThenInclude(rp => rp.Product);
             return View(await applicationDbContext.ToListAsync());
         }
 

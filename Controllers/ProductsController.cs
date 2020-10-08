@@ -49,6 +49,7 @@ namespace myPantry.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
+            ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id");
             ViewData["LocationId"] = new SelectList(_context.Set<Location>(), "Id", "Id");
             ViewData["ProductTypeId"] = new SelectList(_context.Set<ProductType>(), "Id", "Id");
             return View();
