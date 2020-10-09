@@ -1,8 +1,58 @@
-﻿@{
+﻿@model IEnumerable<myPantry.Models.Products>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h2>Pantry</h2>
+                <img /> 
+                <ul>
+                @foreach(var item in Model)
+                {
+                    @if (item.LocationId == 1)
+                    {
+
+
+                    <li>@item.Name</li>
+                        }
+                    }
+                    </ul>
+            </div>
+            <div class="col-sm">
+                <h2>Fridge</h2>
+                <img />
+                <ul>
+                @foreach (var item in Model)
+                {
+                    @if (item.LocationId == 2)
+                    {
+
+
+                        <li>@item.Name</li>
+                    }
+                }
+                </ul>
+            </div>
+            <div class="col-sm">
+                <h2>Freezer</h2>
+                <img />
+                <ul>
+                    @foreach (var item in Model)
+                    {
+                        @if (item.LocationId == 3)
+                        {
+
+
+                            <li>@item.Name</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

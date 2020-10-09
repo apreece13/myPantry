@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using myPantry.Data;
 using myPantry.Models;
+using myPantry.Models.RecipeViewModels;
 
 namespace myPantry.Controllers
 {
@@ -51,8 +52,20 @@ namespace myPantry.Controllers
         // GET: Recipes/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id");
-            return View();
+            RecipeCreateViewModel vm = new RecipeCreateViewModel();
+
+            vm.products = _context.Products.Select(p => new SelectListItem
+            {
+                Value = p.Id.ToString(),
+                Text = p.Name
+
+            }
+            ).ToList();
+
+            vm.products.Insert(0, new SelectListItem() { Value = "0", Text = "Please Select Products" });
+
+            //ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id");
+            return View(vm);
         }
 
         // POST: Recipes/Create
