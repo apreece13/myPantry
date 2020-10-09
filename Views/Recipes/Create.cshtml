@@ -17,10 +17,10 @@
                 <input asp-for="recipe.Name" class="form-control" />
                 <span asp-validation-for="recipe.Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="recipe.UserId" class="control-label"></label>
                 <select asp-for="recipe.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="recipe.Description" class="control-label"></label>
                 <input asp-for="recipe.Description" class="form-control" />

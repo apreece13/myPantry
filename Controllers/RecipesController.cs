@@ -73,16 +73,24 @@ namespace myPantry.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,UserId,Description")] Recipe recipe)
+        public async Task<IActionResult> Create(RecipeCreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(recipe);
+                _context.Add(viewModel.recipe);
                 await _context.SaveChangesAsync();
+                //change list of selected integers into type recipeProduct
+                List<RecipeProducts> selectedProducts = viewModel.SelectedProducts.Select(x => new RecipeProducts { RecipeId = viewModel.recipe.Id, ProductId = x }).ToList();
+                //use _context.AddRange() to add to database
+                _context.AddRange(selectedProducts);
+                //listOfInts.Select(i => RecipeProducts { recipeId = id, ProductId = i});
+                // await _context.SaveChangesAsync() to save changes to database
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id", recipe.UserId);
-            return View(recipe);
+            ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id", viewModel.recipe.UserId);
+            return View(viewModel.recipe);
         }
 
         // GET: Recipes/Edit/5
