@@ -79,12 +79,11 @@ namespace myPantry.Controllers
             {
                 _context.Add(viewModel.recipe);
                 await _context.SaveChangesAsync();
-                //change list of selected integers into type recipeProduct
+                
                 List<RecipeProducts> selectedProducts = viewModel.SelectedProducts.Select(x => new RecipeProducts { RecipeId = viewModel.recipe.Id, ProductId = x }).ToList();
-                //use _context.AddRange() to add to database
+                
                 _context.AddRange(selectedProducts);
-                //listOfInts.Select(i => RecipeProducts { recipeId = id, ProductId = i});
-                // await _context.SaveChangesAsync() to save changes to database
+                
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));

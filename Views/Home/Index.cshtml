@@ -5,53 +5,65 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome to myPantry</h1>
     <div class="container">
         <div class="row">
-            <div class="col-sm">
-                <h2>Pantry</h2>
+            <div class="col-sm " >
+                <h2>
+                    <a class="btn btn-lg btn-primary" data-toggle="collapse" href="#pantryButton" role="button"> Pantry</a>
+                </h2>
                 <img /> 
-                <ul>
-                @foreach(var item in Model)
-                {
-                    @if (item.LocationId == 1)
-                    {
-
-
-                    <li>@item.Name</li>
-                        }
-                    }
-                    </ul>
-            </div>
-            <div class="col-sm">
-                <h2>Fridge</h2>
-                <img />
-                <ul>
-                @foreach (var item in Model)
-                {
-                    @if (item.LocationId == 2)
-                    {
-
-
-                        <li>@item.Name</li>
-                    }
-                }
-                </ul>
-            </div>
-            <div class="col-sm">
-                <h2>Freezer</h2>
-                <img />
-                <ul>
-                    @foreach (var item in Model)
-                    {
-                        @if (item.LocationId == 3)
+                <div class="collapse" id="pantryButton">
+                    <div>
+                        @foreach (var item in Model)
                         {
+                            @if (item.LocationId == 1)
+                            {
 
 
-                            <li>@item.Name</li>
+                                <div>@item.Name</div>
+                            }
                         }
-                    }
-                </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <h2>
+                <a class="btn btn-lg btn-primary" data-toggle="collapse" href="#fridgeButton" role="button">Fridge</a>
+                </h2>
+                <img />
+                <div class="collapse" id="fridgeButton">
+                    <div>
+                        @foreach (var item in Model)
+                        {
+                            @if (item.LocationId == 2)
+                            {
+
+
+                                <div>@item.Name</div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <h2>
+                    <a class="btn btn-lg btn-primary" data-toggle="collapse" href="#freezerButton" role="button">Freezer</a>
+                </h2>
+                <img />
+                <div class="collapse" id="freezerButton">
+                    <div>
+                        @foreach (var item in Model)
+                        {
+                            @if (item.LocationId == 3)
+                            {
+
+
+                                <div>@item.Name</div>
+                            }
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
