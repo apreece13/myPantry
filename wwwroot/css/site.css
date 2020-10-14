@@ -62,8 +62,8 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     /* The image used */
-   /* background-image: url("https://cdn.hipwallpaper.com/i/5/99/762igU.jpg");*/
-    background-image: url('@Url.Content("https://cdn.hipwallpaper.com/i/5/99/762igU.jpg")');
+    /* background-image: url("https://cdn.hipwallpaper.com/i/5/99/762igU.jpg");*/
+    background-image: url('spoonsofspices.jpg');
     /* Set a specific height */
     height: 500px;
     /* Create the parallax scrolling effect */

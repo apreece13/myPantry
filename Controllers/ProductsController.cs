@@ -20,10 +20,21 @@ namespace myPantry.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
+            var products = from p in _context.Products
+                           select p;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Name.Contains(searchString));  
+                return View(await products.ToListAsync());              
+            }
+
             var applicationDbContext = _context.Products.Include(p => p.ProductLocation).Include(p => p.ProductProductType);
+
             return View(await applicationDbContext.ToListAsync());
+            
         }
 
         // GET: Products/Details/5
