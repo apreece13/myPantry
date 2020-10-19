@@ -27,7 +27,8 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    text-shadow: white 0px 0px 10px;
 }
 @media (min-width: 768px) {
   html {
@@ -63,7 +64,8 @@ body {
     margin-bottom: 60px;
     /* The image used */
     /* background-image: url("https://cdn.hipwallpaper.com/i/5/99/762igU.jpg");*/
-    background-image: url('spoonsofspices.jpg');
+/*    background-image: url('C:\Users\newforce\workspace\capstones\back-end\myPantry\wwwroot\photos\spoonsOfSpices.jpg');*/
+    background-image: url('../photos/spoonsofspices.jpg');
     /* Set a specific height */
     height: 500px;
     /* Create the parallax scrolling effect */
@@ -71,9 +73,14 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    color: blue;
+    color: darkslateblue;
 }
 
+td {
+    font-size: 1em;
+    color: darkslateblue;
+    font-weight: bold;
+}
 
 .footer {
   position: absolute;
