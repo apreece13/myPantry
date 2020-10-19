@@ -12,7 +12,7 @@ namespace myPantry.Models
         public int Quantity { get; set; }
         public int LocationId { get; set; }
         public Location ProductLocation { get; set; }
-        public byte ProductImage { get; set; }
+        public string ProductImage { get; set; }
         public string UserId { get; set; }
         public Users ProductUser { get; set; }
         public int ProductTypeId { get; set; }

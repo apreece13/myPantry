@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using myPantry.Data;
 using myPantry.Models;
+using myPantry.Models.RecipeViewModels;
 
 namespace myPantry.Controllers
 {
@@ -22,7 +23,8 @@ namespace myPantry.Controllers
         // GET: Recipes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Recipe.Include(r => r.User);
+            var applicationDbContext = _context.Recipe.Include(r => r.User).Include(r => r.RecipeProducts)
+                .ThenInclude(rp => rp.Product);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,6 +38,8 @@ namespace myPantry.Controllers
 
             var recipe = await _context.Recipe
                 .Include(r => r.User)
+                .Include(r => r.RecipeProducts)
+                .ThenInclude(rp => rp.Product)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (recipe == null)
             {
@@ -48,8 +52,20 @@ namespace myPantry.Controllers
         // GET: Recipes/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id");
-            return View();
+            RecipeCreateViewModel vm = new RecipeCreateViewModel();
+
+            vm.products = _context.Products.Select(p => new SelectListItem
+            {
+                Value = p.Id.ToString(),
+                Text = p.Name
+
+            }
+            ).ToList();
+
+            vm.products.Insert(0, new SelectListItem() { Value = "0", Text = "Please Select Products" });
+
+            //ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id");
+            return View(vm);
         }
 
         // POST: Recipes/Create
@@ -57,16 +73,23 @@ namespace myPantry.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,UserId,Description")] Recipe recipe)
+        public async Task<IActionResult> Create(RecipeCreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(recipe);
+                _context.Add(viewModel.recipe);
                 await _context.SaveChangesAsync();
+                
+                List<RecipeProducts> selectedProducts = viewModel.SelectedProducts.Select(x => new RecipeProducts { RecipeId = viewModel.recipe.Id, ProductId = x }).ToList();
+                
+                _context.AddRange(selectedProducts);
+                
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id", recipe.UserId);
-            return View(recipe);
+            ViewData["UserId"] = new SelectList(_context.Set<Users>(), "Id", "Id", viewModel.recipe.UserId);
+            return View(viewModel.recipe);
         }
 
         // GET: Recipes/Edit/5

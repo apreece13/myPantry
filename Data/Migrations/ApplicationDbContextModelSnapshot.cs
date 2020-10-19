@@ -258,6 +258,28 @@ namespace myPantry.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Location");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LocationName = "Pantry"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LocationName = "Fridge"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LocationName = "Freezer"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            LocationName = "Shopping List"
+                        });
                 });
 
             modelBuilder.Entity("myPantry.Models.ProductType", b =>
@@ -267,12 +289,54 @@ namespace myPantry.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("ProductType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Carbohydrates"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Fruits"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Vegtables"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Beef"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Fish"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Poultry"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Dairy/Alternatives"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Other"
+                        });
                 });
 
             modelBuilder.Entity("myPantry.Models.Products", b =>
@@ -288,8 +352,8 @@ namespace myPantry.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("ProductImage")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("ProductImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
@@ -300,8 +364,8 @@ namespace myPantry.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -312,6 +376,258 @@ namespace myPantry.Data.Migrations
                     b.HasIndex("ProductUserId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LocationId = 1,
+                            Name = "Honey",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 8,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LocationId = 1,
+                            Name = "Peanut Butter",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 8,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LocationId = 3,
+                            Name = "Frozen Strawberries",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 2,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            LocationId = 3,
+                            Name = "Banana",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 2,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            LocationId = 2,
+                            Name = "Almond Milk",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 7,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            LocationId = 1,
+                            Name = "Sourdough Bread",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 1,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            LocationId = 2,
+                            Name = "Eggs",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 8,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            LocationId = 2,
+                            Name = "Butter",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 7,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            LocationId = 2,
+                            Name = "Ground Beef",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 4,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            LocationId = 2,
+                            Name = "Cheddar Cheese",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 7,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            LocationId = 2,
+                            Name = "Red Peppers",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 3,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            LocationId = 2,
+                            Name = "Green Peppers",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 3,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            LocationId = 1,
+                            Name = "Onions",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 3,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            LocationId = 2,
+                            Name = "Carrots",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 3,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            LocationId = 1,
+                            Name = "Hamburger Buns",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 1,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            LocationId = 2,
+                            Name = "Lettuce",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 3,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            LocationId = 2,
+                            Name = "Tomato",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 3,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            LocationId = 2,
+                            Name = "Apples",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 2,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            LocationId = 2,
+                            Name = "Tortillas",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 1,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            LocationId = 2,
+                            Name = "Grape Jelly",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 8,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            LocationId = 3,
+                            Name = "Fish Sticks",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 5,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            LocationId = 2,
+                            Name = "Blueberries",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 2,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            LocationId = 2,
+                            Name = "Blackberries",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 2,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            LocationId = 2,
+                            Name = "V8",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 3,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            LocationId = 3,
+                            Name = "Salmon",
+                            ProductImage = "https://static6.depositphotos.com/1052036/548/v/950/depositphotos_5487922-stock-illustration-trash-can.jpg",
+                            ProductTypeId = 5,
+                            Quantity = 2,
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("myPantry.Models.Recipe", b =>
@@ -327,17 +643,83 @@ namespace myPantry.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("RecipeUrl")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Recipe");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "A delcious smoothie with stawberries, bananas, honey, peanut butter, and almond milk.",
+                            Name = "Strawberry Banana Smoothie",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Classic breakfast of two eggs and a piece of sourdough bread, toasted.",
+                            Name = "Eggs and Toast",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Peanut butter and grape jelly on sourdough bread.",
+                            Name = "PB&J",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "A combination of ground beef, cheddar cheese, eggs, onions and peppers rolled up in a tortilla.",
+                            Name = "Breakfast Burrito",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Ground beef, V8, onions, peppers, carrots, tomatoes, and a little cheddar cheese on top make this Fall staple",
+                            Name = "Chili",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "6 month old frozen fish sticks with cheddar cheese on a tortilla. I guess it is edible?",
+                            Name = "Fish Tacos",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "Beef and cheese in a steamed tortilla shell. Better than Taco Bell.",
+                            Name = "Beef Tacos",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Patty out some ground beef and light up the grill. Ground beef, cheddar cheese, lettuce, tomato and onion on Kroger brand hamburger buns make this burger to die for.",
+                            Name = "Cheeseburger",
+                            RecipeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQcaD7i-mv_DcouV4sn-7xnIv1cE8Rh0ShVJA&usqp=CAU",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+                        });
                 });
 
             modelBuilder.Entity("myPantry.Models.RecipeProducts", b =>
@@ -360,6 +742,242 @@ namespace myPantry.Data.Migrations
                     b.HasIndex("RecipeId");
 
                     b.ToTable("RecipeProducts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ProductId = 1,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ProductId = 2,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ProductId = 3,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ProductId = 4,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ProductId = 5,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ProductId = 1,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ProductId = 6,
+                            RecipeId = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ProductId = 7,
+                            RecipeId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ProductId = 8,
+                            RecipeId = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ProductId = 6,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ProductId = 2,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ProductId = 20,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ProductId = 9,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ProductId = 10,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ProductId = 7,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ProductId = 13,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ProductId = 11,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ProductId = 12,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ProductId = 19,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ProductId = 9,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ProductId = 24,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ProductId = 13,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ProductId = 11,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ProductId = 12,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ProductId = 14,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ProductId = 17,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ProductId = 10,
+                            RecipeId = 5
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ProductId = 21,
+                            RecipeId = 6
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ProductId = 19,
+                            RecipeId = 6
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ProductId = 10,
+                            RecipeId = 6
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ProductId = 9,
+                            RecipeId = 7
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ProductId = 10,
+                            RecipeId = 7
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ProductId = 19,
+                            RecipeId = 7
+                        },
+                        new
+                        {
+                            Id = 34,
+                            ProductId = 9,
+                            RecipeId = 8
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ProductId = 10,
+                            RecipeId = 8
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ProductId = 16,
+                            RecipeId = 8
+                        },
+                        new
+                        {
+                            Id = 37,
+                            ProductId = 17,
+                            RecipeId = 8
+                        },
+                        new
+                        {
+                            Id = 38,
+                            ProductId = 13,
+                            RecipeId = 8
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ProductId = 15,
+                            RecipeId = 8
+                        });
                 });
 
             modelBuilder.Entity("myPantry.Models.Users", b =>
@@ -373,6 +991,26 @@ namespace myPantry.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ccb95e0b-812f-4bee-a248-6f5d27ef1f18",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAyOcDhufnZFKJTdDinwmbhnIUvHm/9tUsFI0Xa3Ig0nGYAHGa2iOQaAxq0I/ERihA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com",
+                            FirstName = "admin",
+                            LastName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -458,7 +1096,7 @@ namespace myPantry.Data.Migrations
                 {
                     b.HasOne("myPantry.Models.Users", "User")
                         .WithMany("Recipes")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("myPantry.Models.RecipeProducts", b =>
